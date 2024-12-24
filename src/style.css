@@ -1,3 +1,24 @@
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f8f8;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d0d0d0;
+}
+
+/* 组件样式 */
 .new-tab {
   background-color: #f0f0f0;
   border: 1px solid #ccc;
@@ -12,4 +33,401 @@
   position: relative;
   text-decoration: none;
   width: 100%;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.rules-container {
+  margin-bottom: 16px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  color: #333;
+  margin: 0;
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 16px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.button.delete {
+  background-color: #f44336;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+}
+
+.button.delete:hover {
+  background-color: #da190b;
+}
+
+.button.delete svg {
+  width: 16px;
+  height: 16px;
+}
+
+.popup-container {
+  padding: 16px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  min-width: 600px;
+}
+
+.group-section {
+  margin-bottom: 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.group-select {
+  min-width: 150px;
+}
+
+.new-group-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 1;
+}
+
+.rules-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rule-item {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rule-header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.type-select {
+  min-width: 120px;
+}
+
+.header-select {
+  flex: 1;
+}
+
+.last-value {
+  font-size: 12px;
+  color: #666;
+  background-color: #f5f5f5;
+  padding: 8px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.value-content {
+  flex: 1;
+  min-width: 0; /* 防止 flex 子元素溢出 */
+}
+
+.value-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.value-text:hover {
+  color: #1890ff;
+}
+
+.value-time {
+  color: #999;
+}
+
+.add-rule-btn {
+  margin-top: 8px;
+}
+
+.rule-inputs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+
+.rule-inputs .type-select {
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.rule-inputs .ant-input {
+  flex: 2;
+  min-width: 180px;
+}
+
+.rule-inputs .ant-select {
+  flex: 1;
+  min-width: 140px;
+}
+
+.rule-inputs .ant-btn {
+  flex-shrink: 0;
+}
+
+.rule-inputs .ant-switch {
+  flex-shrink: 0;
+}
+
+.header-input-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.value-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.value-info span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #666;
+}
+
+.button.copy {
+  background-color: #2196F3;
+  padding: 4px 12px;
+  flex-shrink: 0;
+}
+
+.button.copy:hover {
+  background-color: #1976D2;
+}
+
+.input-field {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.header-input-container {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+.header-input-container .input-field {
+  flex: 1;
+  min-width: 0;
+  padding-right: 30px;
+}
+
+.header-select:hover {
+  opacity: 1;
+}
+
+.header-select:focus {
+  outline: none;
+}
+
+.header-input,
+.header-input::-webkit-calendar-picker-indicator,
+datalist {
+  display: none;
+}
+
+.notification {
+  animation: slideDown 0.3s ease-in-out;
+  background-color: #4CAF50;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  color: white;
+  padding: 12px 20px;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+@keyframes slideDown {
+  from { 
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .3s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.rule-item.disabled {
+  opacity: 0.7;
+}
+
+.value-popover {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.value-popover-text {
+  word-break: break-all;
+  white-space: pre-wrap;
+  font-family: monospace;
+  padding: 8px;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.group-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.group-option span {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 在下拉列表中的删除按钮样式 */
+.ant-select-dropdown .group-option .ant-btn {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.ant-select-dropdown .group-option:hover .ant-btn {
+  opacity: 1;
+}
+
+/* 在选择器显示区域中隐藏删除按钮 */
+.ant-select-selector .group-option .ant-btn {
+  display: none;
+}
+
+/* 确保图标在按钮中居中 */
+.group-option .ant-btn .anticon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.group-option .ant-btn .anticon svg {
+  display: block;
+  margin: auto;
+}
+
+.delete-group-options {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #fafafa;
+  border-radius: 4px;
+}
+
+.delete-group-options p {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.delete-group-options .ant-radio-wrapper {
+  font-size: 14px;
 }

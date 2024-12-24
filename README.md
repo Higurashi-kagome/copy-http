@@ -1,24 +1,39 @@
-This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
+# Copy HTTP Extension
 
-## Getting Started
+[简体中文](./README.zh.md)
 
-First, run the development server:
+A Chrome extension for copying HTTP request and response data. By setting rules, you can automatically copy request headers, response headers, URLs, request bodies, and request parameters to the clipboard.
+
+## Features
+
+- Copy request headers
+- Copy response headers
+- Copy URLs
+- Copy request bodies
+- Copy request parameters
+- Support regex and JSONPath matching
+- Group rules management
+- Support English and Chinese UI
+
+## Development
+
+First, clone the repository and install dependencies, then run the development server:
 
 ```bash
+pnpm install
 pnpm dev
 # or
+npm install
 npm run dev
 ```
 
-Open your browser and load the appropriate development build. For example, if you are developing for the chrome browser, using manifest v3, use: `build/chrome-mv3-dev`.
+Open your browser and load the appropriate development build. For example, if you are developing for Chrome with manifest v3, use: `build/chrome-mv3-dev`.
 
-You can start editing the popup by modifying `popup.tsx`. It should auto-update as you make changes. To add an options page, simply add a `options.tsx` file to the root of the project, with a react component default exported. Likewise to add a content page, add a `content.ts` file to the root of the project, importing some module and do some logic, then reload the extension on your browser.
+The extension is built with [Plasmo](https://docs.plasmo.com/) framework. For more details, please refer to the official documentation.
 
-For further guidance, [visit our Documentation](https://docs.plasmo.com/)
+## Building for Production
 
-## Making production build
-
-Run the following:
+Run the following command:
 
 ```bash
 pnpm build
@@ -26,8 +41,22 @@ pnpm build
 npm run build
 ```
 
-This should create a production bundle for your extension, ready to be zipped and published to the stores.
+This will create a production bundle that's ready to be zipped and published to the stores.
 
-## Submit to the webstores
+## Privacy
 
-The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/framework/workflows/submit) and you should be on your way for automated submission!
+- All data is processed locally in your browser
+- No data is uploaded to any server
+- Open source code, welcome to inspect and contribute
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+MIT
+
+## Support
+
+If you have any questions or suggestions, please open an issue on GitHub. 

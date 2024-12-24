@@ -1,0 +1,161 @@
+{
+  "addRule": {
+    "message": "添加规则"
+  },
+  "newGroup": {
+    "message": "新建分组"
+  },
+  "allRules": {
+    "message": "全部规则"
+  },
+  "noGroup": {
+    "message": "无分组"
+  },
+  "groupName": {
+    "message": "输入分组名称"
+  },
+  "confirm": {
+    "message": "确定"
+  },
+  "cancel": {
+    "message": "取消"
+  },
+  "deleteGroup": {
+    "message": "确认删除分组"
+  },
+  "deleteGroupConfirm": {
+    "message": "确定要删除分组\"$1\"吗？"
+  },
+  "deleteGroupRules": {
+    "message": "该分组下有 $1 条规则，请选择处理方式:"
+  },
+  "ungroupRules": {
+    "message": "将规则设为未分组状态"
+  },
+  "deleteRules": {
+    "message": "同时删除这些规则"
+  },
+  "urlPattern": {
+    "message": "URL正则匹配"
+  },
+  "matchValue": {
+    "message": "匹配值 (例如: $1)"
+  },
+  "regexOrJsonPath": {
+    "message": "正则表达式或 JSONPath (例如: $.data.id)"
+  },
+  "paramName": {
+    "message": "参数名 (例如: id)"
+  },
+  "headerSelect": {
+    "message": "请选择或输入"
+  },
+  "lastMatch": {
+    "message": "最近匹配值: "
+  },
+  "matchTime": {
+    "message": "时间: "
+  },
+  "copy": {
+    "message": "复制"
+  },
+  "copySuccess": {
+    "message": "复制成功"
+  },
+  "copyFail": {
+    "message": "复制失败"
+  },
+  "clipboardCopied": {
+    "message": "值已复制到剪贴板"
+  },
+  "pleaseTryAgain": {
+    "message": "请重试"
+  },
+  "deleteGroupSuccess_ungroup": {
+    "message": "分组已删除，相关规则已设为未分组状态"
+  },
+  "deleteGroupSuccess_delete": {
+    "message": "分组及其规则已删除"
+  },
+  "tour_groupSelect": {
+    "message": "分组选择"
+  },
+  "tour_groupSelectDesc": {
+    "message": "在这里选择或创建分组。"
+  },
+  "tour_ruleList": {
+    "message": "规则列表"
+  },
+  "tour_ruleListDesc": {
+    "message": "在这里查看和管理规则。"
+  },
+  "tour_addRuleBtn": {
+    "message": "添加规则"
+  },
+  "tour_addRuleBtnDesc": {
+    "message": "点击这里添加新规则。"
+  },
+  "tour_enableSwitch": {
+    "message": "启用开关"
+  },
+  "tour_enableSwitchDesc": {
+    "message": "在这里启用或禁用规则。"
+  },
+  "tour_typeSelect": {
+    "message": "类���选择"
+  },
+  "tour_typeSelectDesc": {
+    "message": "在这里选择规则类型。"
+  },
+  "tour_grouping": {
+    "message": "分组选择"
+  },
+  "tour_groupingDesc": {
+    "message": "在这里选择规则所属的分组。"
+  },
+  "tour_urlRegex": {
+    "message": "URL 正则匹配"
+  },
+  "tour_urlRegexDesc": {
+    "message": "在这里输入 URL 正则匹配模式。"
+  },
+  "tour_matchingValue": {
+    "message": "匹配值"
+  },
+  "tour_matchingValueDesc": {
+    "message": "在这里输入匹配值或正则表达式。"
+  },
+  "tour_recentCapture": {
+    "message": "最近捕获"
+  },
+  "tour_recentCaptureDesc": {
+    "message": "在这里查看最近捕获的值，点击复制按钮复制到剪贴板。"
+  },
+  "tour_deleteRule": {
+    "message": "删除规则"
+  },
+  "tour_deleteRuleDesc": {
+    "message": "点击这里删除规则。"
+  },
+  "extensionDescription": {
+    "message": "复制 HTTP 请求和响应信息到剪贴板。"
+  },
+  "groupNameRequired": {
+    "message": "分组名称不能为空"
+  },
+  "ruleType_header": {
+    "message": "请求头"
+  },
+  "ruleType_responseHeader": {
+    "message": "响应头"
+  },
+  "ruleType_url": {
+    "message": "URL"
+  },
+  "ruleType_requestParam": {
+    "message": "请求参数"
+  },
+  "ruleType_requestBody": {
+    "message": "请求体"
+  }
+} 

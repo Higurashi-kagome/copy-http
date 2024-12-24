@@ -1,0 +1,161 @@
+{
+  "addRule": {
+    "message": "Add Rule"
+  },
+  "newGroup": {
+    "message": "New Group"
+  },
+  "allRules": {
+    "message": "All Rules"
+  },
+  "noGroup": {
+    "message": "No Group"
+  },
+  "groupName": {
+    "message": "Enter group name"
+  },
+  "confirm": {
+    "message": "Confirm"
+  },
+  "cancel": {
+    "message": "Cancel"
+  },
+  "deleteGroup": {
+    "message": "Confirm Delete Group"
+  },
+  "deleteGroupConfirm": {
+    "message": "Are you sure to delete group \"$1\"?"
+  },
+  "deleteGroupRules": {
+    "message": "There are $1 rules in this group, please select how to handle them:"
+  },
+  "ungroupRules": {
+    "message": "Set rules to ungrouped"
+  },
+  "deleteRules": {
+    "message": "Delete these rules as well"
+  },
+  "urlPattern": {
+    "message": "URL Regex Pattern"
+  },
+  "matchValue": {
+    "message": "Match Value (e.g. $1)"
+  },
+  "regexOrJsonPath": {
+    "message": "Regex or JSONPath (e.g. $.data.id)"
+  },
+  "paramName": {
+    "message": "Parameter Name (e.g. id)"
+  },
+  "headerSelect": {
+    "message": "Select or input"
+  },
+  "lastMatch": {
+    "message": "Last Match: "
+  },
+  "matchTime": {
+    "message": "Time: "
+  },
+  "copy": {
+    "message": "Copy"
+  },
+  "copySuccess": {
+    "message": "Copy Success"
+  },
+  "copyFail": {
+    "message": "Copy Failed"
+  },
+  "clipboardCopied": {
+    "message": "Value copied to clipboard"
+  },
+  "pleaseTryAgain": {
+    "message": "Please try again"
+  },
+  "deleteGroupSuccess_ungroup": {
+    "message": "Group has been deleted, related rules are now ungrouped"
+  },
+  "deleteGroupSuccess_delete": {
+    "message": "Group and its rules have been deleted"
+  },
+  "tour_groupSelect": {
+    "message": "Group Selection"
+  },
+  "tour_groupSelectDesc": {
+    "message": "Select or create groups here."
+  },
+  "tour_ruleList": {
+    "message": "Rule List"
+  },
+  "tour_ruleListDesc": {
+    "message": "View and manage rules here."
+  },
+  "tour_addRuleBtn": {
+    "message": "Add Rule"
+  },
+  "tour_addRuleBtnDesc": {
+    "message": "Click here to add new rule."
+  },
+  "tour_enableSwitch": {
+    "message": "Enable Switch"
+  },
+  "tour_enableSwitchDesc": {
+    "message": "Enable or disable rules here."
+  },
+  "tour_typeSelect": {
+    "message": "Type Selection"
+  },
+  "tour_typeSelectDesc": {
+    "message": "Select rule type here."
+  },
+  "tour_grouping": {
+    "message": "Group Selection"
+  },
+  "tour_groupingDesc": {
+    "message": "Select which group the rule belongs to."
+  },
+  "tour_urlRegex": {
+    "message": "URL Regex Pattern"
+  },
+  "tour_urlRegexDesc": {
+    "message": "Enter URL regex pattern here."
+  },
+  "tour_matchingValue": {
+    "message": "Matching Value"
+  },
+  "tour_matchingValueDesc": {
+    "message": "Enter matching value or regex here."
+  },
+  "tour_recentCapture": {
+    "message": "Recent Capture"
+  },
+  "tour_recentCaptureDesc": {
+    "message": "View recently captured value here, click copy button to copy to clipboard."
+  },
+  "tour_deleteRule": {
+    "message": "Delete Rule"
+  },
+  "tour_deleteRuleDesc": {
+    "message": "Click here to delete rule."
+  },
+  "extensionDescription": {
+    "message": "Copy HTTP request and response information to clipboard."
+  },
+  "groupNameRequired": {
+    "message": "Group name cannot be empty"
+  },
+  "ruleType_header": {
+    "message": "Request Header"
+  },
+  "ruleType_responseHeader": {
+    "message": "Response Header"
+  },
+  "ruleType_url": {
+    "message": "URL"
+  },
+  "ruleType_requestParam": {
+    "message": "Request Parameter"
+  },
+  "ruleType_requestBody": {
+    "message": "Request Body"
+  }
+} 
