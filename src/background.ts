@@ -4,6 +4,8 @@ import { handleRequestBody } from '~listeners/requestBody'
 import { handleRequestParams } from '~listeners/requestParams'
 import { handleResponseHeaders } from '~listeners/responseHeaders'
 import { logger } from "~utils/logger"
+import OFFSCREEN_DOCUMENT_PATH from 'url:~src/offscreen.html'
+
 
 // 初始化监听器
 async function initListeners() {
@@ -34,3 +36,30 @@ chrome.storage.onChanged.addListener((changes) => {
 
 // 首次初始化
 initListeners()
+
+async function createOffscreenDocument() {
+    if (!await hasDocument()) {
+        try {
+            await chrome.offscreen.createDocument({
+                url: OFFSCREEN_DOCUMENT_PATH,
+                reasons: [chrome.offscreen.Reason.CLIPBOARD],
+                justification: 'Write text to the clipboard.'
+            });
+        } catch (error) {
+        }
+    }
+}
+
+async function hasDocument() {
+    // Check all windows controlled by the service worker if one of them is the offscreen document
+    // @ts-ignore clients
+    const matchedClients = await clients.matchAll()
+    for (const client of matchedClients) {
+        if (client.url.endsWith(OFFSCREEN_DOCUMENT_PATH)) {
+            return true
+        }
+    }
+    return false
+}
+
+createOffscreenDocument()

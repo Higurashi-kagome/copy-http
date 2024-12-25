@@ -394,7 +394,15 @@ const PopupPage: React.FC = () => {
                 <Select
                   className="group-select"
                   value={rule.group || 'none'}
-                  onChange={(value) => updateRule(index, "group", value === 'none' ? undefined : value)}
+                  onChange={(value) => {
+                    updateRule(index, "group", value === 'none' ? undefined : value);
+                    if (selectedGroup !== 'all') {
+                      const targetGroupName = value === 'none' 
+                        ? t('ruleMovedToNoGroup')
+                        : t('ruleMovedToGroup', { name: groups.find(g => g.id === value)?.name });
+                      message.info(targetGroupName);
+                    }
+                  }}
                   options={[
                     { label: t('noGroup'), value: 'none' },
                     ...groups.map(g => ({ label: g.name, value: g.id }))

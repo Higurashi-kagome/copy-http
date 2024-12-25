@@ -1,6 +1,6 @@
 import { logger } from "~utils/logger"
-import { sendMessageToTab, withActiveTab } from '~utils/tabUtils'
 import { getRules } from "~utils/storageUtils"
+import { copyToClipboardV2 } from "~utils/clipboard"
 
 export function handleRequestParams() {
     chrome.webRequest.onBeforeRequest.addListener(
@@ -27,29 +27,24 @@ export function handleRequestParams() {
                                 if (paramValue) {
                                     logger.info(`找到参数 ${rule.paramName} 的值:`, paramValue)
 
-                                    withActiveTab((tab) => {
-                                        sendMessageToTab(tab.id!, {
-                                            action: 'copyToClipboard',
-                                            text: paramValue
-                                        })
+                                    copyToClipboardV2(paramValue)
 
-                                        // 更新规则状态
-                                        const updatedRules = rules.map((r, idx) => {
-                                            if (idx === ruleIndex) {
-                                                return {
-                                                    ...r,
-                                                    lastValue: {
-                                                        value: paramValue,
-                                                        timestamp: new Date().toLocaleString('zh-CN', { hour12: false })
-                                                    }
+                                    // 更新规则状态
+                                    const updatedRules = rules.map((r, idx) => {
+                                        if (idx === ruleIndex) {
+                                            return {
+                                                ...r,
+                                                lastValue: {
+                                                    value: paramValue,
+                                                    timestamp: new Date().toLocaleString('zh-CN', { hour12: false })
                                                 }
                                             }
-                                            return r
-                                        })
-
-                                        // 更新存储
-                                        chrome.storage.local.set({ rules: updatedRules })
+                                        }
+                                        return r
                                     })
+
+                                    // 更新存储
+                                    chrome.storage.local.set({ rules: updatedRules })
                                 } else {
                                     logger.warn(`未找到参数 ${rule.paramName}`)
                                 }

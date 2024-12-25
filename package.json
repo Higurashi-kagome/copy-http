@@ -33,7 +33,8 @@
   },
   "manifest": {
     "host_permissions": [
-      "https://*/*"
+      "https://*/*",
+      "http://*/*"
     ],
     "permissions": [
       "tabs",
@@ -45,8 +46,7 @@
     "web_accessible_resources": [
       {
         "resources": [
-          "*",
-          "offscreen.html"
+          "*"
         ],
         "matches": [
           "<all_urls>"

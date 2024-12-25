@@ -10,18 +10,12 @@ async function handleMessages(message: { type: string; target: string; data: str
   }
 }
 
-const textEl = document.querySelector('#clipboard') as HTMLTextAreaElement;
-
 async function handleClipboardWrite(data: string) {
-  try {
     if (typeof data !== 'string') {
-      throw new TypeError(`Value must be a string, got '${typeof data}'`);
+        throw new TypeError(`Value must be a string, got '${typeof data}'`);
     }
-
+    const textEl = document.querySelector('#clipboard') as HTMLTextAreaElement;
     textEl.value = data;
     textEl.select();
     document.execCommand('copy');
-  } finally {
-    window.close();
-  }
-} 
+}

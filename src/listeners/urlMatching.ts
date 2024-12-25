@@ -1,6 +1,6 @@
 import { logger } from "~utils/logger"
-import { sendMessageToTab, withActiveTab } from '~utils/tabUtils'
 import { getRules } from "~utils/storageUtils"
+import { copyToClipboardV2 } from "~utils/clipboard"
 
 export function handleUrlMatching() {
   chrome.webRequest.onBeforeRequest.addListener(
@@ -28,12 +28,7 @@ export function handleUrlMatching() {
                 if (value) {
                   logger.info(`提取的URL值:`, value)
     
-                  withActiveTab((tab) => {
-                    sendMessageToTab(tab.id!, {
-                      action: 'copyToClipboard',
-                      text: value
-                    })
-                  })
+                  copyToClipboardV2(value)
     
                   const updatedRules = rules.map((r, idx) => {
                     if (idx === ruleIndex) {

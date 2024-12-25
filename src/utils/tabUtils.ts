@@ -5,7 +5,7 @@ export function sendMessageToTab(tabId: number, message: any, retries = 3) {
   logger.debug(`尝试向标签页 ${tabId} 发送消息:`, message, `剩余重试次数: ${retries}`)
   chrome.tabs.sendMessage(
     tabId,
-    { ...message, showNotification: true }, // 添加 showNotification 标志
+    { ...message, showNotification: false }, // 添加 showNotification 标志
     (response) => {
       if (chrome.runtime.lastError) {
         logger.warn(`向标签页 ${tabId} 发送消息失败:`, {

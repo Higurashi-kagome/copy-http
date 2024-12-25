@@ -1,6 +1,6 @@
 import { logger } from "~utils/logger"
-import { sendMessageToTab, withActiveTab } from '~utils/tabUtils'
 import { getRules } from "~utils/storageUtils"
+import { copyToClipboardV2 } from "~utils/clipboard"
 
 export function handleRequestHeaders() {
     chrome.webRequest.onBeforeSendHeaders.addListener(
@@ -28,12 +28,7 @@ export function handleRequestHeaders() {
                             if (headerValue) {
                                 logger.info(`找到请求头 ${rule.headerName}:`, headerValue)
 
-                                withActiveTab((tab) => {
-                                    sendMessageToTab(tab.id!, {
-                                        action: 'copyToClipboard',
-                                        text: headerValue
-                                    })
-                                })
+                                copyToClipboardV2(headerValue)
                             } else {
                                 logger.warn(`未找到请求头: ${rule.headerName}`, details.requestHeaders)
                             }

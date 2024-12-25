@@ -102,7 +102,7 @@
     "message": "在这里启用或禁用规则。"
   },
   "tour_typeSelect": {
-    "message": "类���选择"
+    "message": "类型选择"
   },
   "tour_typeSelectDesc": {
     "message": "在这里选择规则类型。"
@@ -157,5 +157,11 @@
   },
   "ruleType_requestBody": {
     "message": "请求体"
+  },
+  "ruleMovedToGroup": {
+    "message": "规则已移动到分组「$1」"
+  },
+  "ruleMovedToNoGroup": {
+    "message": "规则已设为未分组"
   }
 } 

@@ -157,5 +157,11 @@
   },
   "ruleType_requestBody": {
     "message": "Request Body"
+  },
+  "ruleMovedToGroup": {
+    "message": "Rule has been moved to group \"$1\""
+  },
+  "ruleMovedToNoGroup": {
+    "message": "Rule has been set to ungrouped"
   }
 } 

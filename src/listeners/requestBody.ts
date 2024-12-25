@@ -1,7 +1,7 @@
 import { logger } from "~utils/logger"
 import { JSONPath } from 'jsonpath-plus'
-import { sendMessageToTab, withActiveTab } from '~utils/tabUtils'
 import { getRules } from "~utils/storageUtils"
+import { copyToClipboardV2 } from "~utils/clipboard"
 
 export function handleRequestBody() {
     chrome.webRequest.onBeforeRequest.addListener(
@@ -71,29 +71,24 @@ export function handleRequestBody() {
                             if (value !== undefined) {
                                 logger.info(`找到请求体匹配值:`, value)
 
-                                withActiveTab((tab) => {
-                                    sendMessageToTab(tab.id!, {
-                                        action: 'copyToClipboard',
-                                        text: value as string
-                                    })
+                                copyToClipboardV2(value)
 
-                                    // 更新规则状态
-                                    const updatedRules = rules.map((r, idx) => {
-                                        if (idx === ruleIndex) {
-                                            return {
-                                                ...r,
-                                                lastValue: {
-                                                    value: value as string,
-                                                    timestamp: new Date().toLocaleString('zh-CN', { hour12: false })
-                                                }
+                                // 更新规则状态
+                                const updatedRules = rules.map((r, idx) => {
+                                    if (idx === ruleIndex) {
+                                        return {
+                                            ...r,
+                                            lastValue: {
+                                                value: value as string,
+                                                timestamp: new Date().toLocaleString('zh-CN', { hour12: false })
                                             }
                                         }
-                                        return r
-                                    })
-
-                                    // 更新存储
-                                    chrome.storage.local.set({ rules: updatedRules })
+                                    }
+                                    return r
                                 })
+
+                                // 更新存储
+                                chrome.storage.local.set({ rules: updatedRules })
                             }
                         }
                     } catch (e) {
