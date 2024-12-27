@@ -1,6 +1,10 @@
 # Copy HTTP Extension
 
-这是一个用于复制 HTTP 请求和响应数据的 Chrome 扩展。通过设置规则，可以自动复制请求头、响应头、URL、请求体和请求参数等内容到剪贴板。
+[Chrome][aihjaemhdhnklanahidclalbdeilkleo]
+
+这是一个用于复制 HTTP 请求和响应数据的浏览器扩展。通过设置规则，可以自动复制请求头、响应头、URL、请求体和请求参数等内容到剪贴板。
+
+> 图标来自 [iconfont | sshhaa][iconfont]。
 
 ## 功能
 
@@ -35,3 +39,6 @@ npm run build
 ```
 
 这将为扩展创建一个生产包，准备好压缩并发布到商店。
+
+[aihjaemhdhnklanahidclalbdeilkleo]: https://chromewebstore.google.com/detail/copy-http/aihjaemhdhnklanahidclalbdeilkleo
+[iconfont]: https://www.iconfont.cn/user/detail?uid=43820&nid=Tm5ezG3YNRej

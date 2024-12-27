@@ -1,8 +1,10 @@
 # Copy HTTP Extension
 
-[简体中文](./README.zh.md)
+[简体中文](./README.zh.md) | [Chrome][aihjaemhdhnklanahidclalbdeilkleo]
 
-A Chrome extension for copying HTTP request and response data. By setting rules, you can automatically copy request headers, response headers, URLs, request bodies, and request parameters to the clipboard.
+A browse extension for copying HTTP request and response data. By setting rules, you can automatically copy request headers, response headers, URLs, request bodies, and request parameters to the clipboard.
+
+> Icon is from [iconfont | sshhaa][iconfont].
 
 ## Features
 
@@ -13,7 +15,6 @@ A Chrome extension for copying HTTP request and response data. By setting rules,
 - Copy request parameters
 - Support regex and JSONPath matching
 - Group rules management
-- Support English and Chinese UI
 
 ## Development
 
@@ -60,3 +61,6 @@ MIT
 ## Support
 
 If you have any questions or suggestions, please open an issue on GitHub. 
+
+[aihjaemhdhnklanahidclalbdeilkleo]: https://chromewebstore.google.com/detail/copy-http/aihjaemhdhnklanahidclalbdeilkleo
+[iconfont]: https://www.iconfont.cn/user/detail?uid=43820&nid=Tm5ezG3YNRej
