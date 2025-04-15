@@ -1,7 +1,7 @@
 {
   "name": "copy-http",
   "displayName": "Copy Http",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "__MSG_extensionDescription__",
   "author": "HL",
   "scripts": {
