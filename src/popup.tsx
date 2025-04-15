@@ -311,6 +311,24 @@ const PopupPage: React.FC = () => {
     }
   };
 
+  // 修改辅助函数来只在当前分组的规则中查找最新匹配
+  const isLatestMatch = (currentRule: Rule) => {
+    if (!currentRule.lastValue) return false;
+    
+    const currentTimestamp = new Date(currentRule.lastValue.timestamp).getTime();
+    
+    // 获取当前分组的规则
+    const currentGroupRules = rules.filter(rule =>
+      selectedGroup === 'all' || rule.group === selectedGroup
+    );
+    
+    // 在当前分组的规则中查找是否有更新的匹配
+    return !currentGroupRules.some(rule => 
+      rule.lastValue && 
+      new Date(rule.lastValue.timestamp).getTime() > currentTimestamp
+    );
+  };
+
   return (
     <ConfigProvider locale={getAntdLocale()}>
       <div className="popup-container">
@@ -426,7 +444,9 @@ const PopupPage: React.FC = () => {
               {(rule.type === 'url' || rule.type === 'requestBody') ? (
                 <Input
                   className="match-value-input"
-                  placeholder={rule.type === 'url' ? t('matchValue') : t('regexOrJsonPath')}
+                  placeholder={rule.type === 'url' ? 
+                    t('matchValue', { name: '$1' }) : 
+                    t('regexOrJsonPath', { name: '$.data.id' })}
                   value={rule.matchValue || ''}
                   onChange={(e) => updateRule(index, "matchValue", e.target.value)}
                 />
@@ -451,7 +471,7 @@ const PopupPage: React.FC = () => {
               )}
 
               {rule.lastValue && (
-                <div className="last-value">
+                <div className={`last-value ${isLatestMatch(rule) ? 'highlight' : ''}`}>
                   <div className="value-content">
                     <Popover
                       content={

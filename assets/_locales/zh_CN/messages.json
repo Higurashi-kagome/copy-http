@@ -42,7 +42,7 @@
     "message": "匹配值 (例如: $1)"
   },
   "regexOrJsonPath": {
-    "message": "正则表达式或 JSONPath (例如: $.data.id)"
+    "message": "正则表达式或 JSONPath (例如: $1)"
   },
   "paramName": {
     "message": "参数名 (例如: id)"
