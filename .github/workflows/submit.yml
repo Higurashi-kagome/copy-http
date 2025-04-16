@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: 21.x
       - name: npm install
-        run: npm ci || npm install
+        run: npm install
       - name: Build the extension
         run: npm run build
       - name: Package the extension into a zip artifact
