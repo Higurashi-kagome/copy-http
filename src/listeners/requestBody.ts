@@ -2,6 +2,7 @@ import { logger } from "~utils/logger"
 import { JSONPath } from 'jsonpath-plus'
 import { getRules } from "~utils/storageUtils"
 import { copyToClipboardV2 } from "~utils/clipboard"
+import { addHistoryRecord } from "~utils/historyUtils"
 
 export function handleRequestBody() {
     chrome.webRequest.onBeforeRequest.addListener(
@@ -72,6 +73,15 @@ export function handleRequestBody() {
                                 logger.info(`找到请求体匹配值:`, value)
 
                                 copyToClipboardV2(value)
+
+                                // 添加到历史记录
+                                addHistoryRecord({
+                                    ruleType: 'requestBody',
+                                    urlPattern: rule.urlPattern,
+                                    value: value as string,
+                                    timestamp: new Date().toLocaleString('zh-CN', { hour12: false }),
+                                    url: details.url
+                                })
 
                                 // 更新规则状态
                                 const updatedRules = rules.map((r, idx) => {

@@ -436,3 +436,144 @@ input:checked + .slider:before {
   background-color: #e6f7ff;
   border: 1px solid #91d5ff;
 }
+
+/* 历史记录页面样式 */
+.history-container {
+  padding: 16px;
+  min-height: 400px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.history-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.history-search {
+  margin-bottom: 16px;
+}
+
+.history-search .ant-input {
+  border-radius: 6px;
+}
+
+.history-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.history-item {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.history-item:last-child {
+  margin-bottom: 16px;
+}
+
+/* 覆盖 Ant Design List 组件默认样式，确保最后一项显示底边框 */
+.ant-list-split .ant-list-item:last-child {
+  border-block-end: 1px solid #d9d9d9 !important;
+}
+
+.history-item-content {
+  width: 100%;
+  padding: 12px;
+}
+
+.history-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.rule-type {
+  background: #e6f7ff;
+  color: #1890ff;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.timestamp {
+  color: #999;
+  font-size: 12px;
+}
+
+.history-item-details {
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.history-item-details > div {
+  font-size: 12px;
+  color: #666;
+}
+
+.history-item-details strong {
+  color: #333;
+}
+
+.url-pattern,
+.matched-url,
+.header-name,
+.param-name {
+  word-break: break-all;
+}
+
+.history-item-value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  background: #f5f5f5;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.history-item-value .value-text {
+  flex: 1;
+  font-family: monospace;
+  font-size: 12px;
+  color: #333;
+  word-break: break-all;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* 最近匹配值面板的按钮组样式 */
+.last-value-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}

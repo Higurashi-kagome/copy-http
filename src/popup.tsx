@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import type { Rule, RuleGroup } from "~types"
 import { Button, Input, Select, Switch, message, notification, Popover, Modal, Radio, Space, Tour, ConfigProvider } from 'antd'
-import { PlusOutlined, DeleteOutlined, CopyOutlined, QuestionCircleOutlined } from '@ant-design/icons'
+import { PlusOutlined, DeleteOutlined, CopyOutlined, QuestionCircleOutlined, HistoryOutlined } from '@ant-design/icons'
 import { copyToClipboard } from "~utils/clipboard"
 import zhCN from 'antd/es/locale/zh_CN'
 import enUS from 'antd/es/locale/en_US'
@@ -217,6 +217,10 @@ const PopupPage: React.FC = () => {
         description: t('pleaseTryAgain')
       });
     }
+  };
+
+  const openHistoryPage = () => {
+    chrome.tabs.create({ url: chrome.runtime.getURL('tabs/history.html') });
   };
 
   const handleHeaderChange = (value: string, index: number) => {
@@ -493,12 +497,21 @@ const PopupPage: React.FC = () => {
                     </Popover>
                     <div className="value-time">{t('matchTime')}{rule.lastValue.timestamp}</div>
                   </div>
-                  <Button
-                    type="text"
-                    size="small"
-                    icon={<CopyOutlined />}
-                    onClick={() => copyValue(rule.lastValue.value)}
-                  />
+                  <div className="last-value-actions">
+                    <Button
+                      type="text"
+                      size="small"
+                      icon={<CopyOutlined />}
+                      onClick={() => copyValue(rule.lastValue.value)}
+                    />
+                    <Button
+                      type="text"
+                      size="small"
+                      icon={<HistoryOutlined />}
+                      onClick={openHistoryPage}
+                      title={t('viewHistory')}
+                    />
+                  </div>
                 </div>
               )}
             </div>

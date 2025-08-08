@@ -163,5 +163,62 @@
   },
   "ruleMovedToNoGroup": {
     "message": "Rule has been set to ungrouped"
+  },
+  "viewHistory": {
+    "message": "View History"
+  },
+  "recentCaptures": {
+    "message": "Recent Captures"
+  },
+  "noHistoryRecords": {
+    "message": "No history records"
+  },
+  "matchedUrl": {
+    "message": "Matched URL"
+  },
+  "headerName": {
+    "message": "Header Name"
+  },
+  "capturedValue": {
+    "message": "Captured Value"
+  },
+  "requestHeader": {
+    "message": "Request Header"
+  },
+  "responseHeader": {
+    "message": "Response Header"
+  },
+  "requestParam": {
+    "message": "Request Parameter"
+  },
+  "urlMatch": {
+    "message": "URL Match"
+  },
+  "requestBody": {
+    "message": "Request Body"
+  },
+  "clearHistory": {
+    "message": "Clear History"
+  },
+  "searchHistoryPlaceholder": {
+    "message": "Search URL, value, rule type..."
+  },
+  "noSearchResults": {
+    "message": "No matching records found"
+  },
+  "clearHistoryConfirm": {
+    "message": "Confirm Clear History"
+  },
+  "clearHistoryWarning": {
+    "message": "This action will permanently delete all history records and cannot be undone. Are you sure you want to continue?"
+  },
+  "clearHistorySuccess": {
+    "message": "History cleared successfully"
+  },
+  "allHistoryCleared": {
+    "message": "All history records deleted"
+  },
+  "clearHistoryFailed": {
+    "message": "Failed to clear history"
   }
 } 

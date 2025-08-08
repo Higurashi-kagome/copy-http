@@ -1,6 +1,7 @@
 import { logger } from "~utils/logger"
 import { getRules } from "~utils/storageUtils"
 import { copyToClipboardV2 } from "~utils/clipboard"
+import { addHistoryRecord } from "~utils/historyUtils"
 
 export function handleUrlMatching() {
   chrome.webRequest.onBeforeRequest.addListener(
@@ -29,6 +30,15 @@ export function handleUrlMatching() {
                   logger.info(`提取的URL值:`, value)
     
                   copyToClipboardV2(value)
+
+                  // 添加到历史记录
+                  addHistoryRecord({
+                    ruleType: 'url',
+                    urlPattern: rule.urlPattern,
+                    value: value,
+                    timestamp: new Date().toLocaleString('zh-CN', { hour12: false }),
+                    url: details.url
+                  })
     
                   const updatedRules = rules.map((r, idx) => {
                     if (idx === ruleIndex) {

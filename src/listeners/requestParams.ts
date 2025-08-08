@@ -1,6 +1,7 @@
 import { logger } from "~utils/logger"
 import { getRules } from "~utils/storageUtils"
 import { copyToClipboardV2 } from "~utils/clipboard"
+import { addHistoryRecord } from "~utils/historyUtils"
 
 export function handleRequestParams() {
     chrome.webRequest.onBeforeRequest.addListener(
@@ -28,6 +29,16 @@ export function handleRequestParams() {
                                     logger.info(`找到参数 ${rule.paramName} 的值:`, paramValue)
 
                                     copyToClipboardV2(paramValue)
+
+                                    // 添加到历史记录
+                                    addHistoryRecord({
+                                        ruleType: 'requestParam',
+                                        urlPattern: rule.urlPattern,
+                                        paramName: rule.paramName,
+                                        value: paramValue,
+                                        timestamp: new Date().toLocaleString('zh-CN', { hour12: false }),
+                                        url: details.url
+                                    })
 
                                     // 更新规则状态
                                     const updatedRules = rules.map((r, idx) => {

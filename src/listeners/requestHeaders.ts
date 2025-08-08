@@ -1,6 +1,7 @@
 import { logger } from "~utils/logger"
 import { getRules } from "~utils/storageUtils"
 import { copyToClipboardV2 } from "~utils/clipboard"
+import { addHistoryRecord } from "~utils/historyUtils"
 
 export function handleRequestHeaders() {
     chrome.webRequest.onBeforeSendHeaders.addListener(
@@ -29,6 +30,16 @@ export function handleRequestHeaders() {
                                 logger.info(`找到请求头 ${rule.headerName}:`, headerValue)
 
                                 copyToClipboardV2(headerValue)
+
+                                // 添加到历史记录
+                                addHistoryRecord({
+                                    ruleType: 'header',
+                                    urlPattern: rule.urlPattern,
+                                    headerName: rule.headerName,
+                                    value: headerValue,
+                                    timestamp: new Date().toLocaleString('zh-CN', { hour12: false }),
+                                    url: details.url
+                                })
                             } else {
                                 logger.warn(`未找到请求头: ${rule.headerName}`, details.requestHeaders)
                             }

@@ -163,5 +163,62 @@
   },
   "ruleMovedToNoGroup": {
     "message": "规则已设为未分组"
+  },
+  "viewHistory": {
+    "message": "查看历史记录"
+  },
+  "recentCaptures": {
+    "message": "最近捕获记录"
+  },
+  "noHistoryRecords": {
+    "message": "暂无历史记录"
+  },
+  "matchedUrl": {
+    "message": "匹配URL"
+  },
+  "headerName": {
+    "message": "请求头名称"
+  },
+  "capturedValue": {
+    "message": "捕获值"
+  },
+  "requestHeader": {
+    "message": "请求头"
+  },
+  "responseHeader": {
+    "message": "响应头"
+  },
+  "requestParam": {
+    "message": "请求参数"
+  },
+  "urlMatch": {
+    "message": "URL匹配"
+  },
+  "requestBody": {
+    "message": "请求体"
+  },
+  "clearHistory": {
+    "message": "清空历史"
+  },
+  "searchHistoryPlaceholder": {
+    "message": "搜索URL、值、规则类型..."
+  },
+  "noSearchResults": {
+    "message": "没有找到匹配的记录"
+  },
+  "clearHistoryConfirm": {
+    "message": "确认清空历史记录"
+  },
+  "clearHistoryWarning": {
+    "message": "此操作将永久删除所有历史记录，无法恢复。确定要继续吗？"
+  },
+  "clearHistorySuccess": {
+    "message": "历史记录已清空"
+  },
+  "allHistoryCleared": {
+    "message": "所有历史记录已删除"
+  },
+  "clearHistoryFailed": {
+    "message": "清空历史记录失败"
   }
 } 
