@@ -1,5 +1,6 @@
 import { logger } from "./logger"
-import {getTargetTabId, sendToTab} from "./tabUtils"
+import { getTargetTabId, sendToTab } from "./tabUtils"
+import { getSetting } from "~utils/storage"
 
 export interface MatchNotificationData {
   ruleType: "url" | "header" | "responseHeader" | "requestParam" | "requestBody"
@@ -15,6 +16,13 @@ export async function sendMatchNotification(
   data: MatchNotificationData
 ) {
   logger.info("准备发送匹配通知:", { tabId, data })
+
+  // 检查是否启用通知
+  const notificationsEnabled = await getSetting('enableMatchNotifications')
+  if (!notificationsEnabled) {
+    logger.debug("匹配通知已禁用，跳过发送")
+    return
+  }
 
   let displayValue = data.value
 

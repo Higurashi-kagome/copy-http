@@ -18,3 +18,9 @@ export interface RuleGroup {
   name: string
   description?: string
 }
+
+// 应用配置选项
+export interface AppSettings {
+  enableMatchNotifications: boolean  // 是否启用匹配通知
+  enableAutoCopy: boolean           // 是否自动复制匹配内容
+}

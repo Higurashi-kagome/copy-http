@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import type { Rule, RuleGroup } from "~types"
 import { Button, Input, Select, Switch, message, notification, Popover, Modal, Radio, Space, Tour, ConfigProvider } from 'antd'
-import { PlusOutlined, DeleteOutlined, CopyOutlined, QuestionCircleOutlined, HistoryOutlined } from '@ant-design/icons'
+import { PlusOutlined, DeleteOutlined, CopyOutlined, QuestionCircleOutlined, HistoryOutlined, SettingOutlined } from '@ant-design/icons'
 import { copyToClipboard } from "~utils/clipboard"
 import zhCN from 'antd/es/locale/zh_CN'
 import enUS from 'antd/es/locale/en_US'
@@ -241,6 +241,11 @@ const PopupPage: React.FC = () => {
     }
   }
 
+  // 打开选项页面
+  const openOptionsPage = () => {
+    chrome.runtime.openOptionsPage()
+  }
+
   const tourSteps: TourStepProps[] = [
     {
       title: t('tour_groupSelect'),
@@ -393,6 +398,13 @@ const PopupPage: React.FC = () => {
                 shape='circle'
                 icon={<QuestionCircleOutlined />}
                 onClick={() => setIsTourOpen(true)}
+              >
+              </Button>
+              <Button
+                shape='circle'
+                icon={<SettingOutlined />}
+                onClick={openOptionsPage}
+                title={t('openSettings') || '打开设置'}
               >
               </Button>
             </>

@@ -220,5 +220,56 @@
   },
   "clearHistoryFailed": {
     "message": "清空历史记录失败"
+  },
+  "loadSettingsFailed": {
+    "message": "加载设置失败"
+  },
+  "settingsSaved": {
+    "message": "设置已保存"
+  },
+  "settingsSaveFailed": {
+    "message": "设置保存失败"
+  },
+  "settingsReset": {
+    "message": "设置已重置"
+  },
+  "settingsResetFailed": {
+    "message": "设置重置失败"
+  },
+  "extensionSettings": {
+    "message": "Copy HTTP - 扩展设置"
+  },
+  "notificationSettings": {
+    "message": "通知设置"
+  },
+  "enableNotifications": {
+    "message": "启用匹配通知"
+  },
+  "enableNotificationsDesc": {
+    "message": "在页面中显示规则匹配成功的通知"
+  },
+  "copySettings": {
+    "message": "复制设置"
+  },
+  "enableAutoCopy": {
+    "message": "自动复制匹配内容"
+  },
+  "enableAutoCopyDesc": {
+    "message": "当规则匹配成功时，自动将内容复制到剪贴板"
+  },
+  "saveSettings": {
+    "message": "保存设置"
+  },
+  "resetSettings": {
+    "message": "重置设置"
+  },
+  "help": {
+    "message": "帮助"
+  },
+  "notificationHelp": {
+    "message": "控制是否在网页中显示匹配成功的提示通知"
+  },
+  "autoCopyHelp": {
+    "message": "控制是否自动将匹配的内容复制到剪贴板"
   }
 } 

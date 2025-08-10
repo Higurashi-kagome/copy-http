@@ -220,5 +220,56 @@
   },
   "clearHistoryFailed": {
     "message": "Failed to clear history"
+  },
+  "loadSettingsFailed": {
+    "message": "Failed to load settings"
+  },
+  "settingsSaved": {
+    "message": "Settings saved"
+  },
+  "settingsSaveFailed": {
+    "message": "Failed to save settings"
+  },
+  "settingsReset": {
+    "message": "Settings reset"
+  },
+  "settingsResetFailed": {
+    "message": "Failed to reset settings"
+  },
+  "extensionSettings": {
+    "message": "Copy HTTP - Extension Settings"
+  },
+  "notificationSettings": {
+    "message": "Notification Settings"
+  },
+  "enableNotifications": {
+    "message": "Enable Match Notifications"
+  },
+  "enableNotificationsDesc": {
+    "message": "Display notifications in the page when rules match successfully"
+  },
+  "copySettings": {
+    "message": "Copy Settings"
+  },
+  "enableAutoCopy": {
+    "message": "Auto Copy Matched Content"
+  },
+  "enableAutoCopyDesc": {
+    "message": "Automatically copy content to clipboard when rules match successfully"
+  },
+  "saveSettings": {
+    "message": "Save Settings"
+  },
+  "resetSettings": {
+    "message": "Reset Settings"
+  },
+  "help": {
+    "message": "Help"
+  },
+  "notificationHelp": {
+    "message": "Control whether to display match success notifications in web pages"
+  },
+  "autoCopyHelp": {
+    "message": "Control whether to automatically copy matched content to clipboard"
   }
 } 

@@ -1,19 +1,17 @@
 import { logger } from "~utils/logger"
 import { JSONPath } from 'jsonpath-plus'
-import { getRules } from "~utils/storageUtils"
-import { copyToClipboardV2 } from "~utils/clipboard"
-import { addHistoryRecord } from "~utils/historyUtils"
-import { sendMatchNotification } from "~utils/notificationUtils"
+import { getRules } from "~utils/storage"
+import { handleMatchResult } from "~utils/matchingUtils"
 
 export function handleRequestBody() {
     chrome.webRequest.onBeforeRequest.addListener(
         (details) => {
             logger.debug("收到请求:", details.url)
-            getRules().then((rules) => {
-                rules.forEach((rule, ruleIndex) => {
+            getRules().then(async (rules) => {
+                for (const [ruleIndex, rule] of rules.entries()) {
                     // 只处理启用的请求体规则
                     if (!rule.enabled || rule.type !== 'requestBody') {
-                        return
+                        continue
                     }
 
                     try {
@@ -71,49 +69,21 @@ export function handleRequestBody() {
                             }
 
                             if (value !== undefined) {
-                                logger.info(`找到请求体匹配值:`, value)
-
-                                copyToClipboardV2(value)
-
-                                // 添加到历史记录
-                                addHistoryRecord({
+                                // 使用通用的匹配结果处理函数
+                                await handleMatchResult({
                                     ruleType: 'requestBody',
                                     urlPattern: rule.urlPattern,
                                     value: value as string,
-                                    timestamp: new Date().toLocaleString('zh-CN', { hour12: false }),
-                                    url: details.url
+                                    url: details.url,
+                                    ruleIndex,
+                                    rules
                                 })
-
-                                // 发送匹配成功通知
-                                sendMatchNotification(details.tabId, {
-                                    ruleType: 'requestBody',
-                                    rulePattern: rule.urlPattern,
-                                    value: value as string,
-                                    url: details.url
-                                })
-
-                                // 更新规则状态
-                                const updatedRules = rules.map((r, idx) => {
-                                    if (idx === ruleIndex) {
-                                        return {
-                                            ...r,
-                                            lastValue: {
-                                                value: value as string,
-                                                timestamp: new Date().toLocaleString('zh-CN', { hour12: false })
-                                            }
-                                        }
-                                    }
-                                    return r
-                                })
-
-                                // 更新存储
-                                chrome.storage.local.set({ rules: updatedRules })
                             }
                         }
                     } catch (e) {
                         logger.error(`规则 ${ruleIndex + 1} 匹配错误:`, e)
                     }
-                })
+                }
             })
         },
         { urls: ["<all_urls>"] },

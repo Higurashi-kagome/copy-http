@@ -1,80 +1,54 @@
 import { logger } from "~utils/logger"
-import { getRules } from "~utils/storageUtils"
-import { copyToClipboardV2 } from "~utils/clipboard"
-import { addHistoryRecord } from "~utils/historyUtils"
-import { sendMatchNotification } from "~utils/notificationUtils"
+import { getRules } from "~utils/storage"
+import { handleMatchResult } from "~utils/matchingUtils"
 
 export function handleUrlMatching() {
   chrome.webRequest.onBeforeRequest.addListener(
     (details) => {
-      logger.debug("收到URL请求:", details.url)
-      getRules().then((rules) => {
-        rules.forEach((rule, ruleIndex) => {
-            // 只处理启用的URL规则
-            if (!rule.enabled || rule.type !== 'url') {
-              return
-            }
-    
-            try {
-              const urlPattern = new RegExp(rule.urlPattern)
-              const match = urlPattern.exec(details.url)
-              if (match) {
-                logger.info(`URL匹配规则 ${ruleIndex + 1}:`, rule.urlPattern)
-    
-                // 替换匹配值中的$n为对应的捕获组
-                let value = rule.matchValue || ''
-                for (let i = 0; i <= match.length; i++) {
-                  value = value.replace(`$${i}`, match[i] || '')
-                }
-    
-                if (value) {
-                  logger.info(`提取的URL值:`, value)
-    
-                  copyToClipboardV2(value)
+      logger.debug("收到请求:", details.url)
+      
+      getRules().then(async (rules) => {
+        for (const [ruleIndex, rule] of rules.entries()) {
+          // 只处理启用的 URL 规则
+          if (!rule.enabled || rule.type !== "url") {
+            continue
+          }
 
-                  // 添加到历史记录
-                  addHistoryRecord({
-                    ruleType: 'url',
-                    urlPattern: rule.urlPattern,
-                    value: value,
-                    timestamp: new Date().toLocaleString('zh-CN', { hour12: false }),
-                    url: details.url
-                  })
+          try {
+            const urlPattern = new RegExp(rule.urlPattern)
+            const match = urlPattern.exec(details.url)
+            if (match) {
+              logger.info(`URL 匹配规则 ${ruleIndex + 1}:`, rule.urlPattern)
 
-                  // 发送匹配成功通知
-                  sendMatchNotification(details.tabId, {
-                    ruleType: 'url',
-                    rulePattern: rule.urlPattern,
-                    value: value,
-                    url: details.url
-                  })
-    
-                  const updatedRules = rules.map((r, idx) => {
-                    if (idx === ruleIndex) {
-                      return {
-                        ...r,
-                        lastValue: {
-                          value: value,
-                          timestamp: new Date().toLocaleString('zh-CN', { hour12: false })
-                        }
-                      }
-                    }
-                    return r
-                  })
-    
-                  // 更新存储
-                  chrome.storage.local.set({ rules: updatedRules })
-                }
-              } else {
-                logger.debug(`URL不匹配规则 ${ruleIndex + 1}:`, {
-                  rule: rule.urlPattern,
-                  url: details.url
+              // 替换匹配值中的 $n 为对应的捕获组
+              let value = rule.matchValue || ""
+              for (let i = 0; i <= match.length; i++) {
+                value = value.replace(`$${i}`, match[i] || "")
+              }
+
+              if (value) {
+                // 使用通用的匹配结果处理函数
+                await handleMatchResult({
+                  ruleType: "url",
+                  urlPattern: rule.urlPattern,
+                  value: value,
+                  url: details.url,
+                  ruleIndex,
+                  rules
                 })
               }
-            } catch (e) {
-              logger.error(`规则 ${ruleIndex + 1} 匹配错误:`, e)
+            } else {
+              logger.debug(`URL 不匹配规则 ${ruleIndex + 1}:`, {
+                rule: rule.urlPattern,
+                url: details.url
+              })
             }
-          })
+          } catch (e) {
+            logger.error(` 规则 ${ruleIndex + 1} 匹配错误:`, e)
+          }
+        }
+      }).catch((error) => {
+        logger.error("处理URL匹配时发生错误:", error)
       })
     },
     { urls: ["<all_urls>"] }
