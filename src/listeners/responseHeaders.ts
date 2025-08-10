@@ -2,6 +2,7 @@ import { logger } from "~utils/logger"
 import { getRules } from "~utils/storageUtils"
 import { copyToClipboardV2 } from "~utils/clipboard"
 import { addHistoryRecord } from "~utils/historyUtils"
+import { sendMatchNotification } from "~utils/notificationUtils"
 
 export function handleResponseHeaders() {
     chrome.webRequest.onHeadersReceived.addListener(
@@ -39,6 +40,15 @@ export function handleResponseHeaders() {
                                     value: headerValue,
                                     timestamp: new Date().toLocaleString('zh-CN', { hour12: false }),
                                     url: details.url
+                                })
+
+                                // 发送匹配成功通知
+                                sendMatchNotification(details.tabId, {
+                                    ruleType: 'responseHeader',
+                                    rulePattern: rule.urlPattern,
+                                    value: headerValue,
+                                    url: details.url,
+                                    headerName: rule.headerName
                                 })
                             } else {
                                 logger.warn(`未找到响应头: ${rule.headerName}`)

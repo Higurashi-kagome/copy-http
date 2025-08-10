@@ -3,6 +3,7 @@ import { JSONPath } from 'jsonpath-plus'
 import { getRules } from "~utils/storageUtils"
 import { copyToClipboardV2 } from "~utils/clipboard"
 import { addHistoryRecord } from "~utils/historyUtils"
+import { sendMatchNotification } from "~utils/notificationUtils"
 
 export function handleRequestBody() {
     chrome.webRequest.onBeforeRequest.addListener(
@@ -80,6 +81,14 @@ export function handleRequestBody() {
                                     urlPattern: rule.urlPattern,
                                     value: value as string,
                                     timestamp: new Date().toLocaleString('zh-CN', { hour12: false }),
+                                    url: details.url
+                                })
+
+                                // 发送匹配成功通知
+                                sendMatchNotification(details.tabId, {
+                                    ruleType: 'requestBody',
+                                    rulePattern: rule.urlPattern,
+                                    value: value as string,
                                     url: details.url
                                 })
 

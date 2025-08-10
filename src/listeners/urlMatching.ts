@@ -2,6 +2,7 @@ import { logger } from "~utils/logger"
 import { getRules } from "~utils/storageUtils"
 import { copyToClipboardV2 } from "~utils/clipboard"
 import { addHistoryRecord } from "~utils/historyUtils"
+import { sendMatchNotification } from "~utils/notificationUtils"
 
 export function handleUrlMatching() {
   chrome.webRequest.onBeforeRequest.addListener(
@@ -37,6 +38,14 @@ export function handleUrlMatching() {
                     urlPattern: rule.urlPattern,
                     value: value,
                     timestamp: new Date().toLocaleString('zh-CN', { hour12: false }),
+                    url: details.url
+                  })
+
+                  // 发送匹配成功通知
+                  sendMatchNotification(details.tabId, {
+                    ruleType: 'url',
+                    rulePattern: rule.urlPattern,
+                    value: value,
                     url: details.url
                   })
     

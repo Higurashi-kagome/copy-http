@@ -2,6 +2,7 @@ import { logger } from "~utils/logger"
 import { getRules } from "~utils/storageUtils"
 import { copyToClipboardV2 } from "~utils/clipboard"
 import { addHistoryRecord } from "~utils/historyUtils"
+import { sendMatchNotification } from "~utils/notificationUtils"
 
 export function handleRequestParams() {
     chrome.webRequest.onBeforeRequest.addListener(
@@ -38,6 +39,15 @@ export function handleRequestParams() {
                                         value: paramValue,
                                         timestamp: new Date().toLocaleString('zh-CN', { hour12: false }),
                                         url: details.url
+                                    })
+
+                                    // 发送匹配成功通知
+                                    sendMatchNotification(details.tabId, {
+                                        ruleType: 'requestParam',
+                                        rulePattern: rule.urlPattern,
+                                        value: paramValue,
+                                        url: details.url,
+                                        paramName: rule.paramName
                                     })
 
                                     // 更新规则状态
